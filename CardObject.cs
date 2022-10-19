@@ -9,11 +9,15 @@ using UnityEngine;
 public class CardObject : ScriptableObject
 {
     //Variables
+    
+    //Sets the name of the card
     public new string name;
-    //Game Level
+    //Game Level speficfices what level the card will show on 
     public string category;
-    //Art Work
-    public Sprite artwork;
-
+    //Background of the card, what it shown to the player before they select it
+    public Sprite BG_Back;
+    //Front of card, that will show when the play selects it, will be pulling from an array or list
+    public Sprite Icon;
+    //Hints to the player on where a matching set is, rare popups or unlock
     public string hints;
 }
