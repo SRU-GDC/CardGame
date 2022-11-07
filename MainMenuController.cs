@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScene : MonoBehaviour
+public class MainMenuController: MonoBehaviour
 {
 	//Button to load Chapters
     public void toChapters()
