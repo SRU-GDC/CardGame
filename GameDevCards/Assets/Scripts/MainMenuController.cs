@@ -10,8 +10,14 @@ public class MainMenuController: MonoBehaviour
     {
         SceneManager.LoadScene("Chapters");
     }
-	
-	//Button to Open Options
+
+    //Button to load Game
+    public void ToGame()
+    {
+        SceneManager.LoadScene("MainGame");
+    }
+
+    //Button to Open Options
     public void ToOptions()
     {   //Pop-Menu sliders for options
         Debug.Log("Pop-Up Menu Options");
@@ -20,13 +26,14 @@ public class MainMenuController: MonoBehaviour
 	//Button to load Gallery
     public void ToGallery()
     {
-        SceneManager.LoadScene("Gallery");
+        Debug.Log("To Gallery");
+        //SceneManager.LoadScene("Gallery");
     }
 	
 	//Button to Exit Game
     public void ExitGame()
     {
-        Application.Quit();
+        
     }
 	
 
