@@ -12,7 +12,10 @@ public class GameManger : MonoBehaviour
     //Variables
     //Ui Text on cavnas
     public TextMeshProUGUI deckSizeCount;
-    //Ui Button on cavnas
+    //Row & Column size
+    const int ROWS = 3;
+    const int COLS = 3;
+
     
     //List will contain all cards in the deck
     public List<CardObject> deck;
