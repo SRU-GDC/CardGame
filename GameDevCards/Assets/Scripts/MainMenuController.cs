@@ -14,7 +14,7 @@ public class MainMenuController: MonoBehaviour
     //Button to load Game
     public void ToGame()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Library");
     }
 
     //Button to Open Options
