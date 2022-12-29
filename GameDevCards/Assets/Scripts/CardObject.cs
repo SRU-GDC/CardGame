@@ -9,7 +9,9 @@ using UnityEngine;
 //[CreateAssetMenu(fileName = "New Card", menuName = "Cards")]
 public class CardObject : MonoBehaviour
 {
+    //Checks if card is in the deck to pull from
     public bool locatedinDeck;
+    //Card location in hand of slots
     public int handIndex;
 
     //Reference to other Scripts
@@ -30,10 +32,8 @@ public class CardObject : MonoBehaviour
     public string hints;
     //Reference to Sprite render
     public SpriteRenderer spriteRenderer;
-
-
-    //Count on how many times card is clicked
-    int pressed = 0;
+    //Variable to check if card is flipped
+    public bool flipped;
 
     //Starts at the start of the project exctution
     private void Start()
@@ -49,17 +49,11 @@ public class CardObject : MonoBehaviour
     //Calls this method whenever a card is pressed
     public void OnMouseDown()
     {
-        if (pressed == 3)
+        if (flipped == false)
         {
             //Calls the Change Sprite Method
             ChangeSprite();
         }
-        else
-        {
-            pressed++;
-            Debug.Log("Card was pressed: " + pressed + " Times, click a card three times to see something happen.");
-        }
-            
     }
 
     /*private void OnMouseDown()
@@ -78,7 +72,11 @@ public class CardObject : MonoBehaviour
     //Changes the sprite design on the card
     public void ChangeSprite()
     {
+        //Checks if card is flipped to show graphic
+        flipped = true;
+        //Assigns for a list of graphics to randomly to card
         arrayIndex = Random.Range(0, IconArray.Length);
+        //Takes theat choosen graphic and changes card image
         spriteRenderer.sprite = IconArray[arrayIndex];
     }
 
