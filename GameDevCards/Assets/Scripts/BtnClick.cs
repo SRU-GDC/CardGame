@@ -5,13 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class BtnClick : MonoBehaviour
 {
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void Library()
+    {
+        SceneManager.LoadScene("Library");
+    }
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void LoadIntro()
     {
         SceneManager.LoadScene("Intro");
     }
     public void Load1()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("MainGame");
     }
     public void Load2()
     {
@@ -36,9 +48,5 @@ public class BtnClick : MonoBehaviour
     public void LoadEnding()
     {
         SceneManager.LoadScene("Ending");
-    }
-    public void Library()
-    {
-        SceneManager.LoadScene("Library");
     }
 }

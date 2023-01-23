@@ -26,11 +26,17 @@ public class GameManger : MonoBehaviour
     public int boardsize = 0;
     public int setBoard;
     public bool Win = false;
+    public int filpCount = 0;
+
+    //Message Manger
+    public GameObject MessagePanel;
+    public TextMeshProUGUI MessageText;
 
     //Starts at the start of the project exctution
     //Runs DrawCard method to setup board
     private void Start()
     {
+        MessagePanel.SetActive(false);
         for (setBoard = 0; setBoard < 9; setBoard++)
         {
             DrawCard();
@@ -40,13 +46,15 @@ public class GameManger : MonoBehaviour
     //Update's game per frame rate
     private void Update()
     {
-        deckSizeCount.text = deck.Count.ToString();
+        if(filpCount == 9)
+        {
+            CheckBoad();
+        }
     }
 
     //Method to Draw out cards and place them in any avilable Card Slot
     public void DrawCard()
     {
-
         //Check if any card objects are avaiable before placing cards on to the board
         if (deck.Count >= 1)
         {
@@ -81,7 +89,7 @@ public class GameManger : MonoBehaviour
             }
         }
     }
-    //Checks what sprite is in card-Debugging
+    /*//Checks what sprite is in card-Debugging
     public void CheckSlot()
     {
         if (cardObject.flipped)
@@ -89,86 +97,126 @@ public class GameManger : MonoBehaviour
             Debug.Log(cardObject.spriteRenderer.sprite);
             //board[0] = cardObject.spriteRenderer.sprite;
         }
-        else
-        {
-            Debug.Log("Flip Cards to see what's under them.");
-        }
     }
-    
+    */
+
     //Returns values in the board-Debugging
     public void CheckBoad()
     {
-        /*Debugging
-         * for (int i = 0; i <board.Length; i++)
-        {
-            Debug.Log(board[i]);
-        }*/
         //Checking if any spots in the board are matches & Checking if there are no matches at all
         //Row 1: 0,1,2
         if (board[0] == 0 && board[1] == 0 && board[2] == 0)
-            {
-                Debug.Log("You Win!");
-            }
-                else if(board[0] == 1 && board[1] == 1 && board[2] == 1)
-                {
-                    Debug.Log("You Win!");
-                }
-                    else if (board[0] == 2 && board[1] == 2 && board[2] == 2)
-                    {
-                        Debug.Log("You Win!");
-                     }
+        {
+            WinGame();
+        }
+        else if(board[0] == 1 && board[1] == 1 && board[2] == 1)
+        {
+            WinGame();
+        }
+        else if (board[0] == 2 && board[1] == 2 && board[2] == 2)
+        {
+            WinGame();
+        }
         //Row 2: 3,4,5
-        if (board[3] == 0 && board[4] == 0 && board[5] == 0)
+        else if (board[3] == 0 && board[4] == 0 && board[5] == 0)
         {
             Win = true;
-            Debug.Log("You Win!");
+            WinGame();
         }
         else if (board[3] == 1 && board[4] == 1 && board[5] == 1)
         {
             Win = true;
-            Debug.Log("You Win!");
+            WinGame();
         }
         else if (board[3] == 2 && board[4] == 2 && board[5] == 2)
         {
             Win = true;
-            Debug.Log("You Win!");
+            WinGame();
         }
         //Row 3: 6,7,8 
         else if (board[6] == 0 && board[7] == 0 && board[8] == 0)
         {
             Win = true;
-            Debug.Log("You Win!");
+            WinGame();
         }
         else if (board[6] == 1 && board[7] == 1 && board[8] == 1)
         {
             Win = true;
-            Debug.Log("You Win!");
+            WinGame();
         }
         else if (board[6] == 2 && board[7] == 2 && board[8] == 2)
         {
             Win = true;
-            Debug.Log("You Win!");
+            WinGame();
         }
+        //Columns 1: 0,3,6
+        else if (board[0] == 0 && board[3] == 0 && board[6] == 0)
+        {
+            Win = true;
+            WinGame();
+        }
+        else if (board[0] == 1 && board[3] == 1 && board[6] == 1)
+        {
+            Win = true;
+            WinGame();
+        }
+        else if (board[0] == 2 && board[3] == 2 && board[6] == 2)
+        {
+            Win = true;
+            WinGame();
+        }
+        //Columns 2: 1,4,7
+        else if (board[1] == 0 && board[4] == 0 && board[7] == 0)
+        {
+            Win = true;
+            WinGame();
+        }
+        else if (board[1] == 1 && board[4] == 1 && board[7] == 1)
+        {
+            Win = true;
+            WinGame();
+        }
+        else if (board[1] == 2 && board[4] == 2 && board[7] == 2)
+        {
+            Win = true;
+            WinGame();
+        }
+        //Columns 3: 2,5,8
+        else if (board[2] == 0 && board[5] == 0 && board[8] == 0)
+        {
+            Win = true;
+            WinGame();
+        }
+        else if (board[2] == 1 && board[5] == 1 && board[8] == 1)
+        {
+            Win = true;
+            WinGame();
+        }
+        else if (board[2] == 2 && board[5] == 2 && board[8] == 2)
+        {
+            Win = true;
+            WinGame();
+        }
+        //Tells Player they Lost the Game and calls method
         else if (Win == false)
         {
-            Debug.Log("You didn't find any matches, reseting Game");
-            ResetGame();
+            LoseGame();
         }
 
-
-
-        //Columns 1: 0,3,6
-
-        //Columns 2: 1,4,7
-
-        //Columns 3: 2,5,8
-
     }
-    public void ResetGame()
+
+    //Display's Loser Message and prompt to start new game
+    public void LoseGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        filpCount = 0;
+        MessageText.text = "You Lose!";
+        MessagePanel.SetActive(true);
     }
-
-
+    //Display's Winner Message and prompt to go to menu
+    public void WinGame()
+    {
+        filpCount = 0;
+        MessageText.text = "YOU WON!";
+        MessagePanel.SetActive(true);
+    }
 }

@@ -59,6 +59,7 @@ public class CardObject : MonoBehaviour
         flipped = true;
         //Takes theat choosen graphic and changes card image
         spriteRenderer.sprite = IconArray[iconArraryIndex];
+        gm.filpCount++;
     }
 
 }
